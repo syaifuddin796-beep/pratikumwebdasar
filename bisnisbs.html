@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>omah90 — Solusi Digital Terdepan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand-dark: #0d1117;
+      --brand-mid: #161b25;
+      --brand-accent: #e8c96d;
+      --brand-accent2: #c4a547;
+      --brand-light: #f5f0e8;
+      --brand-muted: #8b909a;
+      --brand-white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--brand-white);
+      color: var(--brand-dark);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .display-font {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: rgba(13, 17, 23, 0.97);
+      backdrop-filter: blur(12px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(232, 201, 109, 0.15);
+    }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--brand-accent) !important;
+      letter-spacing: -0.5px;
+    }
+    .navbar-brand span { color: var(--brand-white); }
+    .nav-link {
+      color: rgba(255,255,255,0.75) !important;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      padding: 0.5rem 1rem !important;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--brand-accent) !important; }
+    .navbar-toggler { border-color: rgba(232,201,109,0.4); }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(232,201,109,0.9)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .btn-nav-cta {
+      background: var(--brand-accent);
+      color: var(--brand-dark) !important;
+      font-weight: 500;
+      font-size: 0.875rem;
+      border-radius: 4px;
+      padding: 0.45rem 1.25rem !important;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-nav-cta:hover {
+      background: var(--brand-accent2);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO / JUMBOTRON ── */
+    .hero {
+      background: var(--brand-dark);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 0 4rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,201,109,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,201,109,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(232,201,109,0.1);
+      border: 1px solid rgba(232,201,109,0.3);
+      color: var(--brand-accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.1;
+      color: var(--brand-white);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 .accent { color: var(--brand-accent); }
+    .hero p.lead {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 500px;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+    .btn-primary-cta {
+      background: var(--brand-accent);
+      color: var(--brand-dark);
+      font-weight: 500;
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary-cta:hover {
+      background: var(--brand-accent2);
+      color: var(--brand-dark);
+      transform: translateY(-2px);
+    }
+    .btn-outline-cta {
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-outline-cta:hover {
+      border-color: var(--brand-accent);
+      color: var(--brand-accent);
+    }
+    .hero-stats {
+      margin-top: 3rem;
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brand-accent);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.25rem;
+    }
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-card-mock {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(232,201,109,0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 380px;
+    }
+    .hero-card-mock .mock-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;
+    }
+    .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .mock-chart-bar {
+      height: 6px; border-radius: 3px;
+      background: rgba(232,201,109,0.2);
+      margin-bottom: 8px;
+    }
+    .mock-chart-bar.filled { background: var(--brand-accent); }
+    .mock-metric {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .mock-metric-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--brand-white); font-weight: 700;
+    }
+    .mock-badge {
+      background: rgba(100,200,130,0.15);
+      color: #6fc f98; border-radius: 4px;
+      padding: 2px 8px; font-size: 0.75rem; color: #7ecda0;
+    }
+
+    /* ── SECTION TITLES ── */
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--brand-accent);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--brand-dark);
+    }
+
+    /* ── SERVICES / GRID ── */
+    .services-section { padding: 6rem 0; background: var(--brand-white); }
+    .service-card {
+      border: 1px solid #e8e4da;
+      border-radius: 10px;
+      padding: 2rem 1.75rem;
+      height: 100%;
+      transition: all 0.25s;
+      background: var(--brand-white);
+    }
+    .service-card:hover {
+      border-color: var(--brand-accent);
+      box-shadow: 0 8px 32px rgba(232,201,109,0.12);
+      transform: translateY(-4px);
+    }
+    .service-icon {
+      width: 48px; height: 48px;
+      background: rgba(232,201,109,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+    }
+    .service-card h5 {
+      font-size: 1.1rem; font-weight: 500;
+      margin-bottom: 0.75rem; color: var(--brand-dark);
+    }
+    .service-card p {
+      font-size: 0.875rem; color: var(--brand-muted);
+      line-height: 1.65; margin: 0;
+    }
+
+    /* ── PORTFOLIO / GALLERY GRID ── */
+    .portfolio-section { padding: 6rem 0; background: var(--brand-light); }
+    .portfolio-card {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .portfolio-img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .portfolio-card:hover .portfolio-img { transform: scale(1.05); }
+    .portfolio-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,17,23,0.85) 0%, transparent 55%);
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-tag {
+      font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--brand-accent); margin-bottom: 0.4rem;
+    }
+    .portfolio-title { font-size: 1rem; color: white; font-weight: 500; margin: 0; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { padding: 6rem 0; background: var(--brand-dark); }
+    .testimonial-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 2rem;
+      height: 100%;
+    }
+    .testimonial-card .stars { color: var(--brand-accent); font-size: 0.875rem; margin-bottom: 1rem; }
+    .testimonial-card blockquote {
+      font-size: 0.9rem; color: rgba(255,255,255,0.7);
+      line-height: 1.7; margin: 0 0 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--brand-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.8rem; color: var(--brand-dark);
+    }
+    .author-name { font-size: 0.875rem; color: white; font-weight: 500; }
+    .author-role { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+    /* ── PRICING ── */
+    .pricing-section { padding: 6rem 0; background: var(--brand-white); }
+    .pricing-card {
+      border: 1px solid #e8e4da;
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      height: 100%;
+      transition: all 0.25s;
+    }
+    .pricing-card.featured {
+      border-color: var(--brand-accent);
+      background: var(--brand-dark);
+      color: white;
+    }
+    .pricing-card.featured .pricing-price { color: var(--brand-accent); }
+    .pricing-card.featured .pricing-feature { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.1); }
+    .pricing-card.featured .pricing-name { color: white; }
+    .pricing-badge {
+      background: var(--brand-accent);
+      color: var(--brand-dark);
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 2px;
+      display: inline-block; margin-bottom: 1rem;
+    }
+    .pricing-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .pricing-price { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--brand-dark); }
+    .pricing-price span { font-size: 0.9rem; font-weight: 400; color: var(--brand-muted); }
+    .pricing-desc { font-size: 0.85rem; color: var(--brand-muted); margin-bottom: 2rem; }
+    .pricing-feature {
+      font-size: 0.85rem; color: var(--brand-muted);
+      padding: 0.65rem 0;
+      border-bottom: 1px solid #f0ece4;
+    }
+    .pricing-feature:last-child { border-bottom: none; }
+    .pricing-feature::before { content: '✓  '; color: var(--brand-accent); font-weight: 700; }
+    .btn-pricing {
+      display: block; text-align: center;
+      margin-top: 2rem;
+      padding: 0.8rem;
+      border-radius: 6px;
+      font-size: 0.875rem; font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-pricing-outline {
+      border: 1px solid #e8e4da; color: var(--brand-dark);
+    }
+    .btn-pricing-outline:hover { border-color: var(--brand-accent); color: var(--brand-dark); }
+    .btn-pricing-filled {
+      background: var(--brand-accent); color: var(--brand-dark);
+    }
+    .btn-pricing-filled:hover { background: var(--brand-accent2); color: var(--brand-dark); }
+
+    /* ── CTA STRIP ── */
+    .cta-section { padding: 5rem 0; background: var(--brand-accent); }
+    .cta-section h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--brand-dark); }
+    .cta-section p { color: rgba(13,17,23,0.65); font-size: 1rem; }
+    .btn-cta-dark {
+      background: var(--brand-dark); color: white;
+      border: none; padding: 0.85rem 2rem;
+      border-radius: 4px; font-size: 0.9rem; font-weight: 500;
+      text-decoration: none; display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-cta-dark:hover { background: #1a2230; color: white; transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--brand-dark); padding: 3rem 0 1.5rem; border-top: 1px solid rgba(232,201,109,0.1); }
+    footer .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; color: var(--brand-accent); }
+    footer p, footer a { font-size: 0.85rem; color: rgba(255,255,255,0.45); text-decoration: none; line-height: 2; }
+    footer a:hover { color: var(--brand-accent); }
+    footer .footer-title { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
+    footer .divider { border-color: rgba(255,255,255,0.06); margin: 2rem 0 1.5rem; }
+    footer .copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+
+    /* ── UTILITIES ── */
+    @media (max-width: 768px) {
+      .hero { padding-top: 7rem; }
+      .hero-stats { gap: 1.5rem; }
+      .hero-card-mock { max-width: 100%; margin-top: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ NAVBAR ══ -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">omah90<span>.</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#services">Layanan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Portofolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials">Klien</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Harga</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+      </ul>
+      <a href="#contact" class="btn-nav-cta nav-link">Mulai Sekarang</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ HERO ══ -->
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-12">
+        <div class="hero-eyebrow">Mitra Digital Terpercaya</div>
+        <h1>Wujudkan Visi <span class="accent">Bisnis Digital</span> Anda</h1>
+        <p class="lead">Kami membantu bisnis Indonesia berkembang di era digital — dari strategi, desain, hingga pengembangan produk yang berdampak nyata.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#services" class="btn-primary-cta">Jelajahi Layanan</a>
+          <a href="#portfolio" class="btn-outline-cta">Lihat Portofolio</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">150+</div>
+            <div class="hero-stat-label">Klien Aktif</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">8 Th</div>
+            <div class="hero-stat-label">Pengalaman</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">98%</div>
+            <div class="hero-stat-label">Kepuasan Klien</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 offset-lg-1 col-12 hero-visual">
+        <div class="hero-card-mock">
+          <div class="mock-header">
+            <div class="mock-dot" style="background:#e74c3c"></div>
+            <div class="mock-dot" style="background:#f39c12"></div>
+            <div class="mock-dot" style="background:#2ecc71"></div>
+            <span style="font-size:0.75rem; color:rgba(255,255,255,0.3); margin-left:8px;">Dashboard Pertumbuhan</span>
+          </div>
+          <div style="margin-bottom:4px;">
+            <div class="mock-chart-bar filled" style="width:85%"></div>
+            <div class="mock-chart-bar" style="width:100%;height:3px;background:rgba(232,201,109,0.08)"></div>
+          </div>
+          <div class="mock-chart-bar filled" style="width:62%; margin-top:8px;"></div>
+          <div class="mock-chart-bar" style="width:100%;height:3px;background:rgba(232,201,109,0.08)"></div>
+          <div class="mock-chart-bar filled" style="width:91%; margin-top:8px;"></div>
+          <div class="mock-chart-bar" style="width:100%;height:3px;background:rgba(232,201,109,0.08)"></div>
+          <div class="mock-chart-bar filled" style="width:74%; margin-top:8px;"></div>
+          <div class="mock-metric">
+            <div>
+              <div style="font-size:0.7rem;color:rgba(255,255,255,0.4);margin-bottom:4px">Pendapatan Bulan Ini</div>
+              <div class="mock-metric-val">Rp 284 Jt</div>
+            </div>
+            <div class="mock-badge">+24%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SERVICES ══ -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 col-lg-7">
+        <div class="section-label">Layanan Kami</div>
+        <h2 class="section-title">Solusi Komprehensif untuk Bisnis Modern</h2>
+      </div>
+      <div class="col-12 col-lg-5 d-flex align-items-end">
+        <p style="color:var(--brand-muted);font-size:0.9rem;line-height:1.7;margin:0">Dari identitas merek hingga platform digital — kami menangani setiap aspek transformasi digital bisnis Anda dengan pendekatan yang terukur dan strategis.</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h5>Desain Merek & Identitas</h5>
+          <p>Membangun identitas visual yang kuat dan konsisten — logo, panduan merek, dan aset kreatif yang mencerminkan nilai bisnis Anda.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h5>Pengembangan Web & Aplikasi</h5>
+          <p>Website profesional dan aplikasi mobile yang cepat, aman, dan mudah digunakan — dibangun dengan teknologi terkini.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h5>Strategi Pemasaran Digital</h5>
+          <p>Kampanye berbasis data yang menjangkau audiens yang tepat — SEO, media sosial, iklan berbayar, dan content marketing.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h5>Otomasi & Integrasi Sistem</h5>
+          <p>Mengotomasi proses bisnis yang berulang dan menghubungkan seluruh alat kerja Anda dalam satu ekosistem yang terintegrasi.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon">🔒</div>
+          <h5>Konsultasi IT & Keamanan</h5>
+          <p>Memastikan infrastruktur digital bisnis Anda aman, skalabel, dan siap menghadapi tantangan pertumbuhan ke depan.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon">📈</div>
+          <h5>Analitik & Business Intelligence</h5>
+          <p>Mengubah data mentah menjadi wawasan yang dapat ditindaklanjuti — dashboard, laporan, dan prediksi berbasis AI.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ PORTFOLIO ══ -->
+<section class="portfolio-section" id="portfolio">
+  <div class="container">
+    <div class="row mb-5 align-items-end">
+      <div class="col-12 col-md-8">
+        <div class="section-label">Portofolio</div>
+        <h2 class="section-title">Karya yang Bicara Sendiri</h2>
+      </div>
+      <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
+        <a href="#" class="btn btn-outline-secondary btn-sm" style="border-color:#c4a547;color:#8b6e2a;font-size:0.8rem">Lihat Semua Proyek →</a>
+      </div>
+    </div>
+    <div class="row g-3">
+      <!-- Baris 1: 2 kolom besar -->
+      <div class="col-12 col-md-7">
+        <div class="portfolio-card">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard Analytics" class="portfolio-img" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-tag">Web App · Fintech</div>
+            <p class="portfolio-title">Platform Analitik Keuangan Real-time</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-5">
+        <div class="portfolio-card">
+          <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80" alt="E-commerce" class="portfolio-img" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-tag">E-commerce · Retail</div>
+            <p class="portfolio-title">Toko Online Multi-Vendor</p>
+          </div>
+        </div>
+      </div>
+      <!-- Baris 2: 3 kolom -->
+      <div class="col-12 col-md-4">
+        <div class="portfolio-card">
+          <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=500&q=80" alt="Branding" class="portfolio-img" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-tag">Branding · FMCG</div>
+            <p class="portfolio-title">Rebranding Merek Nasional</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="portfolio-card">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&q=80" alt="Mobile App" class="portfolio-img" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-tag">Mobile App · Kesehatan</div>
+            <p class="portfolio-title">Aplikasi Telemedicine</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="portfolio-card">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" alt="Marketing" class="portfolio-img" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-tag">Digital Marketing · SaaS</div>
+            <p class="portfolio-title">Kampanye Pertumbuhan B2B</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ TESTIMONIALS ══ -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <div class="section-label" style="color:var(--brand-accent)">Kata Klien Kami</div>
+        <h2 class="section-title" style="color:white">Dipercaya oleh Ratusan Bisnis</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"omah90 benar-benar mengubah cara kami berbisnis secara digital. Website baru kami meningkatkan konversi hingga 3x lipat dalam 3 bulan pertama."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">RA</div>
+            <div>
+              <div class="author-name">Rizky Adiputra</div>
+              <div class="author-role">CEO, Adiputra Group</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Tim omah90 sangat profesional dan responsif. Proyek kami selesai tepat waktu dan hasilnya melampaui ekspektasi kami."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">SM</div>
+            <div>
+              <div class="author-name">Sari Maharani</div>
+              <div class="author-role">Founder, BatikNusantara</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Strategi digital marketing dari omah90 membantu kami menembus pasar baru. Omset online kami naik 240% dalam setahun."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">BW</div>
+            <div>
+              <div class="author-name">Budi Wirasaputra</div>
+              <div class="author-role">Direktur, Sentosa Kuliner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ PRICING ══ -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="row mb-5 text-center">
+      <div class="col">
+        <div class="section-label">Paket Harga</div>
+        <h2 class="section-title">Pilih Paket yang Tepat</h2>
+        <p style="color:var(--brand-muted);max-width:480px;margin:1rem auto 0;font-size:0.9rem">Transparan, fleksibel, tanpa biaya tersembunyi. Semua paket sudah termasuk dukungan teknis.</p>
+      </div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="pricing-card">
+          <div class="pricing-name">Starter</div>
+          <div class="pricing-price">Rp 3 Jt <span>/ bulan</span></div>
+          <p class="pricing-desc">Ideal untuk bisnis yang baru memulai perjalanan digitalnya.</p>
+          <div class="pricing-feature">Website profesional 5 halaman</div>
+          <div class="pricing-feature">Desain responsif mobile</div>
+          <div class="pricing-feature">Optimasi SEO dasar</div>
+          <div class="pricing-feature">Hosting & domain 1 tahun</div>
+          <div class="pricing-feature">Support email 5×8</div>
+          <a href="#contact" class="btn-pricing btn-pricing-outline">Pilih Starter</a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Paling Populer</div>
+          <div class="pricing-name">Growth</div>
+          <div class="pricing-price">Rp 9 Jt <span>/ bulan</span></div>
+          <p class="pricing-desc" style="color:rgba(255,255,255,0.5)">Untuk bisnis yang siap tumbuh dan membutuhkan solusi lebih lengkap.</p>
+          <div class="pricing-feature">Semua fitur Starter</div>
+          <div class="pricing-feature">Halaman tak terbatas</div>
+          <div class="pricing-feature">Strategi konten & SEO lanjutan</div>
+          <div class="pricing-feature">Integrasi e-commerce</div>
+          <div class="pricing-feature">Dashboard analitik</div>
+          <div class="pricing-feature">Support prioritas 7×24</div>
+          <a href="#contact" class="btn-pricing btn-pricing-filled">Pilih Growth</a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="pricing-card">
+          <div class="pricing-name">Enterprise</div>
+          <div class="pricing-price" style="font-size:1.8rem">Custom</div>
+          <p class="pricing-desc">Solusi skala penuh untuk perusahaan dengan kebutuhan kompleks.</p>
+          <div class="pricing-feature">Semua fitur Growth</div>
+          <div class="pricing-feature">Tim dedicated khusus</div>
+          <div class="pricing-feature">Pengembangan custom</div>
+          <div class="pricing-feature">Integrasi sistem ERP/CRM</div>
+          <div class="pricing-feature">SLA & kontrak tahunan</div>
+          <a href="#contact" class="btn-pricing btn-pricing-outline">Hubungi Kami</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ CTA ══ -->
+<section class="cta-section">
+  <div class="container text-center">
+    <h2 class="display-font mb-3">Siap Memulai Transformasi Digital?</h2>
+    <p class="mb-4">Konsultasi pertama gratis. Tim kami siap membantu Anda merancang strategi yang tepat.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#contact" class="btn-cta-dark">Konsultasi Gratis</a>
+      <a href="tel:+6285000000000" class="btn-cta-dark" style="background:transparent;border:1px solid rgba(13,17,23,0.3);color:var(--brand-dark)">📞 +62 850-0000-0000</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ CONTACT ══ -->
+<section id="contact" style="padding:5rem 0;background:var(--brand-light)">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-12 col-lg-5">
+        <div class="section-label">Kontak</div>
+        <h2 class="section-title mb-3">Mari Bicara</h2>
+        <p style="color:var(--brand-muted);font-size:0.9rem;line-height:1.7;margin-bottom:2rem">Ceritakan kebutuhan bisnis Anda dan kami akan merespons dalam 24 jam kerja.</p>
+        <div style="font-size:0.875rem;color:var(--brand-muted)">
+          <div class="mb-3">📍 Jl. Kusuma Bangsa No.99, Sengon, Kec. Jombang, Kabupaten Jombang, Jawa Timur</div>
+          <div class="mb-3">✉️ halo@omah90.id</div>
+          <div>📞 +62 850-0000-0000</div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-7">
+        <div style="background:white;border-radius:12px;padding:2.5rem;border:1px solid #e8e4da">
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <label style="font-size:0.8rem;color:var(--brand-muted);margin-bottom:6px;display:block">Nama Lengkap</label>
+              <input type="text" class="form-control" placeholder="Budi Santoso" style="border-color:#e8e4da;font-size:0.875rem;border-radius:6px" />
+            </div>
+            <div class="col-12 col-md-6">
+              <label style="font-size:0.8rem;color:var(--brand-muted);margin-bottom:6px;display:block">Email</label>
+              <input type="email" class="form-control" placeholder="budi@perusahaan.com" style="border-color:#e8e4da;font-size:0.875rem;border-radius:6px" />
+            </div>
+            <div class="col-12">
+              <label style="font-size:0.8rem;color:var(--brand-muted);margin-bottom:6px;display:block">Layanan yang Diminati</label>
+              <select class="form-select" style="border-color:#e8e4da;font-size:0.875rem;border-radius:6px">
+                <option>Pilih layanan...</option>
+                <option>Desain Merek & Identitas</option>
+                <option>Pengembangan Web & Aplikasi</option>
+                <option>Strategi Pemasaran Digital</option>
+                <option>Konsultasi IT & Keamanan</option>
+                <option>Paket Enterprise (Diskusi)</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label style="font-size:0.8rem;color:var(--brand-muted);margin-bottom:6px;display:block">Pesan</label>
+              <textarea class="form-control" rows="4" placeholder="Ceritakan kebutuhan bisnis Anda..." style="border-color:#e8e4da;font-size:0.875rem;border-radius:6px;resize:none"></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn w-100 py-3" style="background:var(--brand-dark);color:white;border-radius:6px;font-size:0.875rem;font-weight:500;letter-spacing:0.3px;transition:all 0.2s" onmouseover="this.style.background='#1a2230'" onmouseout="this.style.background='var(--brand-dark)'">
+                Kirim Pesan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-12 col-md-4">
+        <div class="brand">omah90.</div>
+        <p class="mt-3" style="max-width:260px">Mitra digital terpercaya untuk bisnis yang ingin tumbuh dan berkembang di era modern.</p>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="footer-title">Layanan</div>
+        <div><a href="#">Desain Merek</a></div>
+        <div><a href="#">Pengembangan Web</a></div>
+        <div><a href="#">Digital Marketing</a></div>
+        <div><a href="#">Konsultasi IT</a></div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="footer-title">Perusahaan</div>
+        <div><a href="#">Tentang Kami</a></div>
+        <div><a href="#">Tim</a></div>
+        <div><a href="#">Karir</a></div>
+        <div><a href="#">Blog</a></div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="footer-title">Newsletter</div>
+        <p>Dapatkan tips digital marketing & update terbaru langsung di inbox Anda.</p>
+        <div class="d-flex gap-2 mt-2">
+          <input type="email" class="form-control form-control-sm" placeholder="email@anda.com" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);color:white;font-size:0.8rem" />
+          <button class="btn btn-sm" style="background:var(--brand-accent);color:var(--brand-dark);white-space:nowrap;font-size:0.8rem">Daftar</button>
+        </div>
+      </div>
+    </div>
+    <hr class="divider" />
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p class="copy mb-0">© 2025 omah90 Digital Agency. Semua hak dilindungi.</p>
+      <div class="d-flex gap-3">
+        <a href="#" style="font-size:0.78rem;color:rgba(255,255,255,0.25)">Privasi</a>
+        <a href="#" style="font-size:0.78rem;color:rgba(255,255,255,0.25)">Syarat</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // Navbar shadow on scroll
+  window.addEventListener('scroll', () => {
+    const nb = document.querySelector('.navbar');
+    nb.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
+  });
+</script>
+</body>
+</html>
